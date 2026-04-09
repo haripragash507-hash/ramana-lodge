@@ -1,0 +1,29 @@
+.hero-section {
+  /* REMOVE the background-image: url(...) line from here */
+  
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  height: 100vh; 
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  background-color: rgba(0, 0, 0, 0.5); 
+  background-blend-mode: overlay;
+  color: white; 
+}
+
+/* Let's make your hero text look massive and premium */
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}

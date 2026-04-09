@@ -1,0 +1,69 @@
+.navbar {
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between; /* This is the magic rule that pushes nav-links to the right! */
+  align-items: center;
+  background-color: #0056b3; /* Dark blue background */
+  color: white;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Adds nice spacing between all the links */
+}
+
+/* Style for normal text links (Home, Rooms, Offers) */
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.nav-item:hover {
+  opacity: 0.8; /* Slight fade effect when hovered */
+}
+
+/* Style for the prominent Book Now button */
+.book-now-btn {
+  background-color: #f13c59; /* Matches your hero button color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #d6304a; /* Darker red on hover */
+  transform: translateY(-2px); /* Makes the button lift up slightly when hovered */
+}
+
+/* Style for the secondary Login button */
+.login-btn-nav {
+  background-color: transparent;
+  color: white;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-btn-nav:hover {
+  background-color: white;
+  color: #0056b3; /* Turns text blue when hovered so it's readable */
+}

@@ -1,0 +1,24 @@
+.booking-container {
+  padding: 40px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.pay-btn {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
