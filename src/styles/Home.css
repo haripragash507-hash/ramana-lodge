@@ -1,29 +1,234 @@
+/* Base Styles */
+.home-container {
+  font-family: 'Inter', sans-serif; /* Standard clean sans-serif */
+  color: #333;
+  padding-top: 70px; /* Pushes content down below the fixed navbar */
+  font-family: 'mazzard'
+}
+
+.section-label {
+  color: #1e7b5e;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
 .hero-section {
-  /* REMOVE the background-image: url(...) line from here */
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative; /* <-- Make sure this is here! */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px; /* This controls how "tall" the fade is. Change it if you want a longer fade! */
   
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  height: 100vh; 
+  /* The gradient: starts completely transparent and fades to solid white at the very bottom */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
   
+  /* CRITICAL: This ensures the invisible box doesn't block you from clicking your buttons */
+  pointer-events: none; 
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 60px;
+  border-radius: 8px;
+  color: white;
+  max-width: 800px;
+}
+
+.hero-content {
+  color: #ffffff;
+  position: relative;
+  z-index: 5;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.hero-subtitle {
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.hero-content h1 {
+  font-family: 'Georgia', serif;
+  font-size: 4.5rem;
+  margin: 15px 0;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-primary {
+  background-color: #1e7b5e;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Split Sections (Story & Location) */
+.split-section {
+  display: flex;
+  min-height: 80vh;
+}
+
+.split-image {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.split-content {
+  flex: 1;
+  padding: 80px 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  background-color: #ffffff;
+}
+
+.split-content h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  color: #2c3e2d;
+  margin-top: 0;
+}
+
+.split-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.feature-item {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Offers Section */
+.offers-section {
+  background-color: #f8f9fa;
+  padding: 100px 10%;
+}
+
+.offers-header {
   text-align: center;
-  
-  background-color: rgba(0, 0, 0, 0.5); 
-  background-blend-mode: overlay;
-  color: white; 
+  margin-bottom: 50px;
 }
 
-/* Let's make your hero text look massive and premium */
-.hero-section h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
+.offers-header h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  color: #2c3e2d;
+  margin-top: 0;
 }
 
-.hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.cards-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.offer-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  flex: 1;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.badge {
+  background-color: #e6f2ee;
+  color: #1e7b5e;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.claim-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #1e7b5e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Location Specifics */
+.address-box {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 30px 0;
+  border-left: 4px solid #1e7b5e;
+}
+
+.btn-dark {
+  background-color: #222;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+}
+
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }

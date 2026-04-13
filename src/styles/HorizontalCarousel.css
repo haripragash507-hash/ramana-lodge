@@ -1,0 +1,121 @@
+.horizontal-carousel-section {
+  padding: 80px 5%;
+  background-color: #fcfcfc; /* A very clean, minimal background */
+  overflow: hidden; /* Prevent horizontal overflow on the page */
+}
+
+.section-header-center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header-center .section-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #1e7b5e;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.section-header-center h2 {
+  font-family: 'Georgia', serif;
+  color: #2c3e2d;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.horizontal-carousel-wrapper {
+  /* Increased width to allow a nice multi-card carousel look */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible; /* Let cards slide out gracefully if we want */
+}
+
+.horizontal-carousel-container {
+  display: flex;
+  gap: 20px; /* Space between each image card */
+  /* Extra smooth sliding transition */
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  height: 550px; /* Portrait style full-height cards */
+  width: max-content; /* Container flexes to holding all horizontally */
+}
+
+.carousel-slide {
+  /* Gives us roughly 3 cards visible at a time */
+  width: 380px; 
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* Keeps image scale and overlay cleanly contained */
+  cursor: pointer;
+  /* subtle rounding, depending on reference style */
+  border-radius: 4px; 
+}
+
+/* 1. Full size image filling the card */
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide:hover .slide-image {
+  /* Subtle zoom-in to emphasize interaction */
+  transform: scale(1.05);
+}
+
+/* 2. Overlay that appears on hover */
+.slide-content-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cover whole bottom or full area with linear gradient */
+  padding: 40px 30px 30px;
+  
+  /* A dark gradient coming from bottom up to make white text perfectly readable */
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  
+  /* HIDDEN UNTIL HOVER */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.carousel-slide:hover .slide-content-overlay {
+  opacity: 1;
+}
+
+.slide-content-overlay h3 {
+  margin: 0 0 10px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff; /* Must be stark white against the dark overlay */
+}
+
+.slide-content-overlay p {
+  color: #f0f0f0;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  
+  /* Slide-up text animation */
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s; /* Slight delay for cascading feel */
+}
+
+.carousel-slide:hover .slide-content-overlay p {
+  transform: translateY(0);
+}

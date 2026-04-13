@@ -1,13 +1,43 @@
+/* 1. This magically pulls the Mazzard font */
+@import url('https://fonts.cdnfonts.com/css/mazzard-h');
+
+/* 2. Apply it to your whole app */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Mazzard H', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Make sure all your headings use it too */
+h1, h2, h3, h4, h5, h6, button, input, select {
+  font-family: 'Mazzard H', sans-serif;
+}
+
+/* Keep your scrollbar hiding code at the bottom! */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+}
+html, body, #root {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html,
+body,
+#root {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }

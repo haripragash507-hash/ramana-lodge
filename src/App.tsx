@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// 1. IMPORT YOUR NAVBAR AND FOOTER HERE
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -9,35 +8,47 @@ import Login from './pages/public/Login';
 import Booking from './pages/user/Booking';
 import AdminDashboard from './pages/admin/Dashboard';
 
-const currentUser = { role: 'user' };
+import { useLocation } from 'react-router-dom';
+import { RoomProvider } from './context/RoomContext';
+import { OfferProvider } from './context/OfferContext';
+import { BookingHistoryProvider } from './context/BookingHistoryContext';
+import Payment from './pages/user/Payment';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
+  const hideLayout = location.pathname.startsWith('/book') || location.pathname.startsWith('/admin') || location.pathname.startsWith('/payment');
+
   return (
-    <Router>
-      {/* 2. PUT NAVBAR ABOVE ROUTES SO IT SHOWS AT THE TOP */}
-      <Navbar /> 
+    <>
+      {!hideLayout && <Navbar />}
 
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        {/* User Protected Routes */}
-        <Route 
-          path="/book" 
-          element={currentUser.role === 'user' ? <Booking /> : <Navigate to="/login" />} 
-        />
-
-        {/* Admin Protected Routes */}
-        <Route 
-          path="/admin" 
-          element={currentUser.role === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} 
-        />
+        {/* Dashboard Routes */}
+        <Route path="/book" element={<Booking />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
 
-      {/* 3. PUT FOOTER BELOW ROUTES SO IT SHOWS AT THE BOTTOM */}
-      <Footer />
-    </Router>
+      {!hideLayout && <Footer />}
+    </>
+  );
+};
+
+function App() {
+  return (
+    <BookingHistoryProvider>
+      <RoomProvider>
+        <OfferProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </OfferProvider>
+      </RoomProvider>
+    </BookingHistoryProvider>
   );
 }
 
