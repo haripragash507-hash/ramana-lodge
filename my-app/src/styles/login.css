@@ -1,0 +1,192 @@
+/* Container for the whole screen */
+.login-split-container {
+  display: flex;
+  height: 100vh; /* Takes up exactly the full screen height */
+  width: 100%;
+  font-family: 'Outfit', sans-serif; /* Uses the font we set up earlier */
+}
+
+/* --- LEFT SIDE: IMAGE --- */
+.login-image-side {
+  flex: 1.2; /* Takes up slightly more than half the screen */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end; /* Pushes text to the bottom */
+  padding: 60px;
+}
+
+.login-image-text {
+  color: white;
+  max-width: 500px;
+}
+
+.login-image-text h1 {
+  font-size: 3.5rem;
+  font-family: 'Georgia', serif;
+  margin-bottom: 15px;
+}
+
+.login-image-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* --- RIGHT SIDE: FORM --- */
+.login-form-side {
+  flex: 1; /* Takes up the rest of the screen */
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 400px; /* Keeps the form from getting too wide */
+}
+
+.brand-logo h2 {
+  color: #1e7b5e;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.welcome-text {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.subtitle-text {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* --- Add this new block right above your .auth-form styles --- */
+
+/* Role Toggle Switch */
+.role-toggle-container {
+  display: flex;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.role-toggle-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+}
+
+/* The style for whichever button is currently clicked */
+.role-toggle-btn.active {
+  background-color: white;
+  color: #1e7b5e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Adds a subtle pop-out shadow */
+}
+
+.highlight-text {
+  color: #1e7b5e;
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.input-group input:focus {
+  border-color: #1e7b5e;
+}
+
+/* Checkbox & Forgot Password Row */
+.form-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: #1e7b5e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.sign-in-btn {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.sign-in-btn:hover {
+  background-color: #333;
+}
+
+/* Bottom Text */
+.signup-prompt {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.signup-prompt a {
+  color: #1e7b5e;
+  text-decoration: none;
+  font-weight: 600;
+}
