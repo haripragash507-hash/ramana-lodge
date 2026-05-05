@@ -25,6 +25,7 @@ const Login: React.FC = () => {
       }
     } else {
       // If it's any other email, treat them as a normal guest
+      sessionStorage.setItem('current_user', JSON.stringify({ email }));
       navigate('/book');  
     }
   };

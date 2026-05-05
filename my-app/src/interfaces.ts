@@ -38,6 +38,7 @@ export interface BookingRecord {
   status: 'Confirmed' | 'Cancelled';
   dateBooked: string;
   aadhar?: string;
+  userEmail?: string;
 }
 
 export interface BookingHistoryContextType {

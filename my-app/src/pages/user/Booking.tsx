@@ -16,6 +16,16 @@ const Booking: React.FC = () => {
   const bookingHistoryContext = useContext(BookingHistoryContext);
   const bookings = bookingHistoryContext ? bookingHistoryContext.bookings : [];
 
+  const currentUser = JSON.parse(sessionStorage.getItem('current_user') || 'null');
+  const userBookings = currentUser ? bookings.filter((b: any) => b.userEmail === currentUser.email) : [];
+
+  useEffect(() => {
+    if (!currentUser) {
+      alert("Please login to proceed with booking.");
+      navigate('/login');
+    }
+  }, [currentUser, navigate]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') || 'rooms';
 
@@ -93,7 +103,7 @@ const Booking: React.FC = () => {
 
         <div className="user-profile">
           <p className="logged-in-text">LOGGED IN AS</p>
-          <p className="user-name">Guest User</p>
+          <p className="user-name" style={{ fontSize: '12px', wordBreak: 'break-all' }}>{currentUser?.email || 'Guest User'}</p>
         </div>
 
         <nav className="sidebar-nav">
@@ -225,13 +235,13 @@ const Booking: React.FC = () => {
             </div>
 
             <div className="rooms-grid">
-              {bookings.length === 0 ? (
+              {userBookings.length === 0 ? (
                 <div style={{ padding: '40px', background: 'white', borderRadius: '12px', border: '1px solid #eaeaea', textAlign: 'center' }}>
                   <h3 style={{ color: '#666' }}>No bookings found</h3>
                   <button onClick={() => setSearchParams({ tab: 'rooms' })} style={{ marginTop: '20px', padding: '10px 20px', background: '#10b981', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Browse Rooms</button>
                 </div>
               ) : (
-                bookings.map((booking) => (
+                userBookings.map((booking: any) => (
                   <div key={booking.id} style={{ display: 'flex', flexDirection: 'column', padding: '24px', background: 'white', border: '1px solid #eaeaea', borderRadius: '12px', gap: '12px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <h3 style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '20px' }}>{booking.roomName}</h3>

@@ -57,7 +57,8 @@ const Payment: React.FC = () => {
           checkOut: state.checkOut,
           totalPrice: state.totalPrice,
           status: 'Confirmed',
-          aadhar: state.aadhar || 'N/A'
+          aadhar: state.aadhar || 'N/A',
+          userEmail: JSON.parse(sessionStorage.getItem('current_user') || 'null')?.email
         });
 
         // Dispatch actual SMS via backend proxy
