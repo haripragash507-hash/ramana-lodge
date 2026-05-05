@@ -9,6 +9,7 @@ const Signup: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,15 +18,59 @@ const Signup: React.FC = () => {
   };
 
   const handleGoogleLogin = () => {
-    const gmail = prompt('Enter your Gmail address to sign up:');
-    if (gmail) {
-      sessionStorage.setItem('current_user', JSON.stringify({ email: gmail, name: 'Google User' }));
-      navigate('/book');
-    }
+    setShowGoogleModal(true);
+  };
+
+  const handleAccountSelect = (email: string, name: string) => {
+    sessionStorage.setItem('current_user', JSON.stringify({ email, name }));
+    setShowGoogleModal(false);
+    navigate('/book');
   };
 
   return (
     <div className="login-split-container">
+      
+      {showGoogleModal && (
+        <div className="google-modal-overlay" onClick={() => setShowGoogleModal(false)}>
+          <div className="google-modal" onClick={e => e.stopPropagation()}>
+            <div className="google-modal-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" />
+              <h2>Choose an account</h2>
+              <p>to continue to Renga Inn</p>
+            </div>
+            <ul className="google-account-list">
+              <li className="google-account-item" onClick={() => handleAccountSelect('haripragash714@gmail.com', 'Hari Pragash')}>
+                <div className="google-avatar">H</div>
+                <div className="google-account-info">
+                  <span className="google-account-name">Hari Pragash</span>
+                  <span className="google-account-email">haripragash714@gmail.com</span>
+                </div>
+              </li>
+              <li className="google-account-item" onClick={() => handleAccountSelect('haripragash507@gmail.com', 'hari pragash')}>
+                <div className="google-avatar" style={{backgroundColor: '#673ab7'}}>h</div>
+                <div className="google-account-info">
+                  <span className="google-account-name">hari pragash</span>
+                  <span className="google-account-email">haripragash507@gmail.com</span>
+                </div>
+              </li>
+              <li className="google-account-item" onClick={() => {
+                 const mail = prompt('Enter your new email:');
+                 if (mail) handleAccountSelect(mail, 'New User');
+              }}>
+                <div className="google-avatar" style={{backgroundColor: '#fff', color: '#5f6368', border: '1px solid #dadce0'}}>
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                </div>
+                <div className="google-account-info">
+                  <span className="google-account-name" style={{fontWeight: 'normal'}}>Use another account</span>
+                </div>
+              </li>
+            </ul>
+            <div className="google-modal-footer">
+              To continue, Google will share your name, email address, and profile picture with Renga Inn. Before using this app, you can review Renga Inn's <a href="#">privacy policy</a> and <a href="#">terms of service</a>.
+            </div>
+          </div>
+        </div>
+      )}
       
       <div 
         className="login-image-side" 

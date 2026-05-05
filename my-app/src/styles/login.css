@@ -229,6 +229,114 @@
   margin-left: .5em;
 }
 
+/* Google Auth Modal Styles */
+.google-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.google-modal {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  font-family: 'Outfit', sans-serif;
+}
+
+.google-modal-header {
+  padding: 24px 24px 12px 24px;
+  text-align: center;
+}
+
+.google-modal-header img {
+  height: 32px;
+  margin-bottom: 16px;
+}
+
+.google-modal-header h2 {
+  font-size: 20px;
+  color: #202124;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.google-modal-header p {
+  font-size: 14px;
+  color: #5f6368;
+  margin: 0;
+}
+
+.google-account-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid #dadce0;
+}
+
+.google-account-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #dadce0;
+}
+
+.google-account-item:hover {
+  background-color: #f8f9fa;
+}
+
+.google-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1e7b5e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 12px;
+}
+
+.google-account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.google-account-name {
+  font-size: 14px;
+  color: #3c4043;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.google-account-email {
+  font-size: 12px;
+  color: #5f6368;
+}
+
+.google-modal-footer {
+  padding: 16px 24px;
+  font-size: 12px;
+  color: #5f6368;
+  line-height: 1.5;
+  background: #f8f9fa;
+}
+
+.google-modal-footer a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .navbar { padding: 10px; }
   .nav-links-center { display: none; }
