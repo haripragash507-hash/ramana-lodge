@@ -196,9 +196,30 @@ const Payment: React.FC = () => {
               </div>
             ) : paymentMethod === 'upi' ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+                  <p style={{ fontSize: '15px', color: '#4b5563', marginBottom: '15px' }}>Open your preferred UPI app to complete the payment</p>
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap' }}>
+                    <a href={`upi://pay?pa=merchant@upi&pn=RengaInn&am=${state.totalPrice}&cu=INR`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', border: '1px solid #d1d5db', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', color: '#111', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" style={{ height: '20px' }} />
+                       GPay
+                    </a>
+                    <a href={`upi://pay?pa=merchant@upi&pn=RengaInn&am=${state.totalPrice}&cu=INR`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', border: '1px solid #d1d5db', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', color: '#111', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5f259f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                       PhonePe
+                    </a>
+                    <a href={`upi://pay?pa=merchant@upi&pn=RengaInn&am=${state.totalPrice}&cu=INR`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', border: '1px solid #d1d5db', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', color: '#111', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="Other UPI" style={{ height: '18px' }} />
+                       Other Apps
+                    </a>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '10px 0' }}>
+                  <hr style={{ flex: 1, border: 'none', borderTop: '1px solid #e5e7eb' }} />
+                  <span style={{ fontSize: '13px', color: '#9ca3af' }}>OR ENTER UPI ID</span>
+                  <hr style={{ flex: 1, border: 'none', borderTop: '1px solid #e5e7eb' }} />
+                </div>
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', color: '#4b5563', fontWeight: 500 }}>Enter UPI ID</label>
-                  <input type="text" required placeholder="example@okbank" style={{ width: '100%', padding: '12px 16px', border: '1px solid #d1d5db', borderRadius: '8px', outline: 'none' }} />
+                  <input type="text" placeholder="example@okbank" style={{ width: '100%', padding: '12px 16px', border: '1px solid #d1d5db', borderRadius: '8px', outline: 'none' }} />
                 </div>
               </div>
             ) : (
