@@ -37,6 +37,7 @@ export interface BookingRecord {
   totalPrice: number;
   status: 'Confirmed' | 'Cancelled';
   dateBooked: string;
+  aadhar?: string;
 }
 
 export interface BookingHistoryContextType {
@@ -86,6 +87,7 @@ export interface PaymentState {
   checkIn: string;
   checkOut: string;
   totalPrice: number;
+  aadhar?: string;
 }
 
 export interface EditFormData {

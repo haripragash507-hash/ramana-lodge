@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => {
     const doc = new jsPDF();
     doc.text("Total Bookings Report", 14, 15);
     
-    const tableColumn = ["Booking ID", "Name", "Phone Number", "Date", "Room"];
+    const tableColumn = ["Booking ID", "Name", "Phone Number", "Aadhar", "Date", "Room"];
     const tableRows: any[] = [];
 
     filteredBookings.forEach(booking => {
@@ -101,6 +101,7 @@ const Dashboard: React.FC = () => {
         booking.id,
         booking.guestName,
         booking.phone,
+        booking.aadhar || 'N/A',
         new Date(booking.dateBooked).toLocaleDateString(),
         booking.roomName
       ];
@@ -642,6 +643,7 @@ const Dashboard: React.FC = () => {
                     <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Booking ID</th>
                     <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Name</th>
                     <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Phone Number</th>
+                    <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Aadhar</th>
                     <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Date</th>
                     <th style={{ padding: '12px 8px', color: '#475569', fontWeight: '600' }}>Room</th>
                   </tr>
@@ -652,13 +654,14 @@ const Dashboard: React.FC = () => {
                       <td style={{ padding: '16px 8px', color: '#64748b' }}>{booking.id}</td>
                       <td style={{ padding: '16px 8px', fontWeight: '500', color: '#0f172a' }}>{booking.guestName}</td>
                       <td style={{ padding: '16px 8px', color: '#334155' }}>{booking.phone}</td>
+                      <td style={{ padding: '16px 8px', color: '#334155' }}>{booking.aadhar || 'N/A'}</td>
                       <td style={{ padding: '16px 8px', color: '#334155' }}>{new Date(booking.dateBooked).toLocaleDateString()}</td>
                       <td style={{ padding: '16px 8px', color: '#334155' }}>{booking.roomName}</td>
                     </tr>
                   ))}
                   {filteredBookings.length === 0 && (
                     <tr>
-                      <td colSpan={5} style={{ padding: '20px', textAlign: 'center', color: '#666' }}>No bookings found.</td>
+                      <td colSpan={6} style={{ padding: '20px', textAlign: 'center', color: '#666' }}>No bookings found.</td>
                     </tr>
                   )}
                 </tbody>

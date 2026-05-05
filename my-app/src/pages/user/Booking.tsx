@@ -69,7 +69,8 @@ const Booking: React.FC = () => {
         phone: formData.phone,
         checkIn: formData.checkIn,
         checkOut: formData.checkOut,
-        totalPrice: selectedRoom.price
+        totalPrice: selectedRoom.price,
+        aadhar: formData.aadhar
       }
     });
   };

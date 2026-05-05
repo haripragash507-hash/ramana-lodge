@@ -501,4 +501,21 @@
     gap: 15px;
     padding-bottom: 20px;
   }
+}@media (max-width: 768px) {
+  .navbar { padding: 10px; }
+  .nav-links-center { display: none; }
+  .hero-content h1 { font-size: 2.5rem !important; }
+  .split-section, .split-section.reverse { flex-direction: column !important; }
+  .split-image { min-height: 300px; }
+  .admin-container, .user-dashboard-container { flex-direction: column; }
+  .dashboard-sidebar, .admin-sidebar { width: 100% !important; height: auto !important; min-height: unset !important; position: static !important; }
+  .dashboard-main, .admin-main { margin-left: 0 !important; width: 100% !important; }
+  .booking-split-layout { flex-direction: column; }
+  .room-card, .user-room-card { flex-direction: column !important; }
+  .room-image-wrapper { width: 100% !important; height: 250px; }
+  .room-display { flex-direction: column !important; }
+  .room-display > div:first-child { width: 100% !important; height: 200px !important; }
+  .login-split-container { flex-direction: column !important; }
+  .login-image-side, .login-form-side { flex: unset !important; width: 100% !important; min-height: 50vh !important; }
+  .table-container { overflow-x: auto; }
 }
