@@ -13,6 +13,10 @@ import { RoomProvider } from './context/RoomContext';
 import { OfferProvider } from './context/OfferContext';
 import { BookingHistoryProvider } from './context/BookingHistoryContext';
 import Payment from './pages/user/Payment';
+import AboutUs from './pages/public/AboutUs';
+import LocationPage from './pages/public/Location';
+import Gallery from './pages/public/Gallery';
+import Offers from './pages/public/Offers';
 
 const AppContent = () => {
   const location = useLocation();
@@ -25,6 +29,10 @@ const AppContent = () => {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/location" element={<LocationPage />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/offers" element={<Offers />} />
         <Route path="/login" element={<Login />} />
 
         {/* Dashboard Routes */}
