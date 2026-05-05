@@ -2,36 +2,22 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/login.css';
 
-// 1. IMPORT YOUR NEW CREDENTIALS FILE!
-import { ADMIN_CREDENTIALS } from '../../config/credentials';
+const signupBg = "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80";
 
-const loginBg = "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80";
-
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // 2. USE THE SEPARATE FILE TO CHECK LOGIN
-    if (email === ADMIN_CREDENTIALS.email) {
-      // It's the admin email, but did they get the password right?
-      if (password === ADMIN_CREDENTIALS.password) {
-        navigate('/admin'); // Success! Send to Dashboard
-      } else {
-        alert('Incorrect Admin Password!'); // Failed password
-      }
-    } else {
-      // If it's any other email, treat them as a normal guest
-      sessionStorage.setItem('current_user', JSON.stringify({ email }));
-      navigate('/book');  
-    }
+    sessionStorage.setItem('current_user', JSON.stringify({ email, name }));
+    navigate('/book');
   };
 
   const handleGoogleLogin = () => {
-    const gmail = prompt('Enter your Gmail address to sign in:');
+    const gmail = prompt('Enter your Gmail address to sign up:');
     if (gmail) {
       sessionStorage.setItem('current_user', JSON.stringify({ email: gmail, name: 'Google User' }));
       navigate('/book');
@@ -43,11 +29,11 @@ const Login: React.FC = () => {
       
       <div 
         className="login-image-side" 
-        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('${loginBg}')` }}
+        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('${signupBg}')` }}
       >
         <div className="login-image-text">
-          <h1>Escape to Comfort.</h1>
-          <p>Experience the tranquility of the temple city with the uncompromised comfort of Renga Inn.</p>
+          <h1>Start your journey.</h1>
+          <p>Create an account to book your stay and experience true comfort at Renga Inn.</p>
         </div>
       </div>
 
@@ -58,17 +44,28 @@ const Login: React.FC = () => {
             <h2>Renga Inn</h2>
           </div>
 
-          <h1 className="welcome-text">Welcome back</h1>
-          <p className="subtitle-text">Please enter your details to sign in.</p>
+          <h1 className="welcome-text">Create an account</h1>
+          <p className="subtitle-text">Please enter your details to sign up.</p>
 
           <button type="button" className="google-btn" onClick={handleGoogleLogin}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" style={{ height: '20px' }} />
-            Sign in with Google
+            Sign up with Google
           </button>
 
           <div className="divider">or</div>
 
-          <form onSubmit={handleLogin} className="auth-form">
+          <form onSubmit={handleSignup} className="auth-form">
+            <div className="input-group">
+              <label>Full Name</label>
+              <input 
+                type="text" 
+                placeholder="Enter your name" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required 
+              />
+            </div>
+
             <div className="input-group">
               <label>Email address</label>
               <input 
@@ -91,18 +88,11 @@ const Login: React.FC = () => {
               />
             </div>
 
-            <div className="form-actions-row">
-              <label className="remember-me">
-                <input type="checkbox" /> Remember me
-              </label>
-              <a href="#" className="forgot-link">Forgot password?</a>
-            </div>
-
-            <button type="submit" className="sign-in-btn">Sign in</button>
+            <button type="submit" className="sign-in-btn">Sign up</button>
           </form>
 
           <p className="signup-prompt">
-            Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); navigate('/signup'); }}>Sign up</a>
+            Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Sign in</a>
           </p>
         </div>
       </div>
@@ -111,4 +101,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Signup;

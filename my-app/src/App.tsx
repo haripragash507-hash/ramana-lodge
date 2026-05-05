@@ -17,6 +17,7 @@ import AboutUs from './pages/public/AboutUs';
 import LocationPage from './pages/public/Location';
 import Gallery from './pages/public/Gallery';
 import Offers from './pages/public/Offers';
+import Signup from './pages/public/Signup';
 
 const AppContent = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const AppContent = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/offers" element={<Offers />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
         {/* Dashboard Routes */}
         <Route path="/book" element={<Booking />} />
